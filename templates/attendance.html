@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3 class="mb-4">📝 Attendance</h3>
+
+<form method="POST" class="row g-2 mb-4">
+  <div class="col-md-3">
+    <select name="student_id" class="form-select" required>
+      <option value="">Select Student</option>
+      {% for s in students %}<option value="{{ s[0] }}">{{ s[1] }}</option>{% endfor %}
+    </select>
+  </div>
+  <div class="col-md-3">
+    <select name="subject_id" class="form-select" required>
+      <option value="">Select Subject</option>
+      {% for sub in subjects %}<option value="{{ sub[0] }}">{{ sub[1] }}</option>{% endfor %}
+    </select>
+  </div>
+  <div class="col-md-2"><input type="date" name="date" class="form-control" required></div>
+  <div class="col-md-2">
+    <select name="status" class="form-select" required>
+      <option value="Present">Present</option>
+      <option value="Absent">Absent</option>
+    </select>
+  </div>
+  <div class="col-md-2"><button class="btn btn-primary w-100">Mark</button></div>
+</form>
+
+<table class="table table-hover table-bordered">
+  <thead class="table-dark">
+    <tr><th>ID</th><th>Student</th><th>Subject</th><th>Date</th><th>Status</th></tr>
+  </thead>
+  <tbody>
+    {% for a in logs %}
+    <tr>
+      <td>{{ a[0] }}</td>
+      <td>{{ a[1] }}</td>
+      <td>{{ a[2] }}</td>
+      <td>{{ a[3] }}</td>
+      <td class="{% if a[4] == 'Absent' %}text-danger{% else %}text-success{% endif %}">{{ a[4] }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

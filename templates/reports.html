@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3 class="mb-4">📈 Attendance Reports</h3>
+
+<table class="table table-striped table-hover">
+  <thead class="table-dark">
+    <tr>
+      <th>Student</th><th>Subject</th><th>Days Present</th><th>Total Days</th><th>% Attendance</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in data %}
+    <tr>
+      <td>{{ r[0] }}</td>
+      <td>{{ r[1] }}</td>
+      <td>{{ r[2] }}</td>
+      <td>{{ r[3] }}</td>
+      <td class="{% if r[4] < 75 %}text-danger{% else %}text-success{% endif %}">{{ r[4] }}%</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

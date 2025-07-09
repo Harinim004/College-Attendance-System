@@ -1,0 +1,15 @@
+body {
+    background: #f8f9fa;
+    transition: background 0.3s ease;
+}
+.dark-mode {
+    background-color: #121212;
+    color: #eee;
+}
+.dark-mode .table {
+    color: #fff;
+}
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #ffeb3b;
+}
